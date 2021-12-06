@@ -7,7 +7,8 @@ import './assets/css/global.css'
 
 // 设置反向代理，前端请求默认发送到 http://localhost:8443/api
 import axios from 'axios'
-axios.defaults.baseURL = 'http://localhost:8443/api'
+// axios.defaults.baseURL = 'http://localhost:8443/api'
+axios.defaults.baseURL = 'http://localhost:8444/api'
 // 全局注册，之后可在其他组件中通过 this.$axios 发送数据
 Vue.prototype.$http = axios
 
