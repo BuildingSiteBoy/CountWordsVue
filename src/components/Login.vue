@@ -29,7 +29,8 @@ export default {
       return {
         rules: {
           username: [{required: true, message: '用户名不能为空', trigger: 'blur'}],
-          password: [{required: true, message: '密码不能为空', trigger: 'blur'}]
+          password: [{required: true, message: '密码不能为空', trigger: 'blur'},
+                     {min: 6, max: 15, message: '长度在6-15个字符之间', trigger: 'blur'}]
         },
         checked: true,
         loginForm: {
@@ -40,25 +41,22 @@ export default {
       }
     },
     methods: {
-        login() {
-          this.$http
-            .post('/login', {
-              username: this.loginForm.username,
-              password: this.loginForm.password
-            })
-            .then(resp => {
-              if (resp.data.code === 200) {
-                console.log(resp.data),
-                this.$router.replace({path: '/index'})
-              } else {
-                this.$alert(resp.data.message, '提示', {
-                  confirmButtonText: '确定'
-                })
-              }
-            })
-            .catch(failResponse => {
-            })
+      async login() {
+        const {data : res} = await this.$http
+          .post('/login', {
+            username: this.loginForm.username,
+            password: this.loginForm.password
+          });
+
+        if (res.code === 200) {
+          console.log(res.data),
+          this.$router.replace({path: '/home'})
+        } else {
+          alert(res.message, '提示', {
+            confirmButtonText: '确定'
+          })
         }
+      }
     }
 }
 </script>
