@@ -23,7 +23,9 @@ import {
     Switch,
     Tooltip,
     Pagination,
-    Dialog
+    Dialog,
+    MessageBox,
+    CheckboxGroup
 } from 'element-ui'
 
 Vue.use(Button)
@@ -49,4 +51,6 @@ Vue.use(Switch)
 Vue.use(Tooltip)
 Vue.use(Pagination)
 Vue.use(Dialog)
+Vue.use(CheckboxGroup)
 Vue.prototype.$message = Message
+Vue.prototype.$confirm = MessageBox.confirm

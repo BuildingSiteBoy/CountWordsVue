@@ -1,4 +1,4 @@
-# count_words_vue2
+# count_words_vue
 
 ## Project setup
 ```
